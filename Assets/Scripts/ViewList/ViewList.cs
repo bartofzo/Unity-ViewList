@@ -159,6 +159,20 @@ namespace UnityViewList
         }
 
         /// <summary>
+        /// Returns the index of the item that is selected, -1 if none
+        /// </summary>
+        public int GetSelectedIndex()
+        {
+            for (int i = 0; i < items.Count; i++)
+            {
+                if (items[i].Selected)
+                    return i;
+            }
+
+            return -1;
+        }
+
+        /// <summary>
         /// Returns all selected items
         /// </summary>
         public IEnumerable GetSelectedValues()
@@ -189,7 +203,7 @@ namespace UnityViewList
             int clampedIndex = Mathf.Clamp(index, 0, items.Count - 1);
             var item = CreateItem(value);
 
-            item.transform.SetSiblingIndex(index);
+            item.transform.SetSiblingIndex(clampedIndex);
             items.Insert(clampedIndex, item);
         }
 
