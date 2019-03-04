@@ -339,7 +339,14 @@ namespace UnityViewList
             foreach (var item in items)
                 item.Selected = false;
 
-            
+        }
+
+        /// <summary>
+        /// Selects item at index
+        /// </summary>
+        public void SelectIndex(int index)
+        {
+            items[index].Selected = true;
         }
 
 
@@ -418,7 +425,7 @@ namespace UnityViewList
         /// </summary>
         public abstract class Item : MonoBehaviour
         {
-            public T Value { get; private set; }
+            public T Value { get; set; }
 
             internal void Initialize(ViewList<T> listView, T value)
             {
