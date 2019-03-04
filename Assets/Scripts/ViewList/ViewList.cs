@@ -20,6 +20,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace UnityViewList
 {
@@ -29,6 +30,7 @@ namespace UnityViewList
         /// All items in the list will be placed as children of this transform
         /// </summary>
         public Transform Container;
+        public UnityEvent OnSelectionChange;
 
         private readonly List<Item> items = new List<Item>();
         private bool _multiSelect;
@@ -368,6 +370,9 @@ namespace UnityViewList
                 }
 
             }
+
+            // Fire event
+            OnSelectionChange?.Invoke();
         }
 
         internal void OnItemDestroy(Item item)

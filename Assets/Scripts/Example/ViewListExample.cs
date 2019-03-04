@@ -47,5 +47,14 @@ namespace UnityViewList
             }
         }
 
+        public void OnSelectionChange()
+        {
+            var selected = listView.GetSelectedValue();
+            if (selected != null)
+                Debug.Log("Selected: " + selected.text);
+            else
+                Debug.Log("None selected");
+        }
+
     }
 }
