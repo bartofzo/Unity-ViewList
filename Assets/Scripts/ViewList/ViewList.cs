@@ -215,7 +215,7 @@ namespace UnityViewList
             if (this.ContainsValue(value))
                 throw new Exception("Duplicate items are not allowed");
 
-            int clampedIndex = Mathf.Clamp(index, 0, items.Count - 1);
+            int clampedIndex = Mathf.Clamp(index, 0, Mathf.Max(0, items.Count - 1));
             var item = CreateItem(value);
 
             item.transform.SetSiblingIndex(clampedIndex);
@@ -242,7 +242,7 @@ namespace UnityViewList
         public void Clear()
         {
             for (int i = items.Count - 1; i >= 0; i--)
-                Destroy(items[i].gameObject);
+                DestroyImmediate(items[i].gameObject);
         }
 
         /// <summary>
@@ -254,7 +254,7 @@ namespace UnityViewList
             {
                 if (items[i].Value == value)
                 {
-                    Destroy(items[i].gameObject);
+                    DestroyImmediate(items[i].gameObject);
 
                     //items.RemoveAt(i);
                     return true;
