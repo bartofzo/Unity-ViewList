@@ -195,6 +195,11 @@ namespace UnityViewList
         }
 
         /// <summary>
+        /// Returns how many items there are
+        /// </summary>
+        public int Count => items.Count;
+
+        /// <summary>
         /// Appends an item to the list view
         /// </summary>
         public void AddNew(T value)
