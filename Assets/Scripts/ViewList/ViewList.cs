@@ -143,6 +143,16 @@ namespace UnityViewList
             }
         }
 
+        // https://stackoverflow.com/questions/5110403/class-with-indexer-and-property-named-item
+        [System.Runtime.CompilerServices.IndexerName("MyItem")]
+        public T this[int index]
+        {
+            get
+            {
+                return items[index].Value;
+            }
+        }
+
 
         /// <summary>
         /// Returns the first selected value
@@ -323,6 +333,8 @@ namespace UnityViewList
         {
             foreach (var item in items)
                 item.Selected = false;
+
+            
         }
 
 
@@ -468,5 +480,7 @@ namespace UnityViewList
             /// </summary>
             public abstract void OnSelectionChange(bool selected);
         }
+
+
     }
 }
